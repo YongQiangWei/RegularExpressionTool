@@ -18,6 +18,17 @@
  */
 + (BOOL) validateStringNilOrEmpty:(NSString *)str;
 
+
+/**
+ *字符串空格判断
+ 
+ * @param string 传入判断字符串
+ * @return YES?NO
+ */
++ (BOOL)validateStringHaveEmptySpace:(NSString *)string;
+
+
+
 /**
  * 字符串长度验证
  
@@ -71,6 +82,8 @@
  * @return YES?NO
  */
 + (BOOL)validateHttpRequestUrl:(NSString *)url;
+
+
 
 /**
  * 护照正则表达式

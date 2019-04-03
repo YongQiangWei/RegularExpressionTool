@@ -19,6 +19,14 @@
     return YES;
 }
 
++ (BOOL) validateStringHaveEmptySpace:(NSString *)string{
+    NSRange range = [string rangeOfString:@" "];
+    if (range.location != NSNotFound) {
+        return NO;
+    }
+    return YES;
+}
+
 + (BOOL)validateParaStringLength:(NSString *)str MaxLength:(NSInteger)maxLength MinLength:(NSInteger)minLength{
     if (str.length < minLength || str.length > maxLength) {
         return NO;
@@ -75,7 +83,7 @@
      15         * 中国联通：China Unicom
      16         * 130,131,132,152,155,156,185,186
      17         */
-    NSString * CU = @"^1(3[0-2]|5[256]|8[56])\\d{8}$";
+    NSString * CU = @"^1(3[0-2]|5[256]|8[56]|7[0-9])\\d{8}$";
     /**
      20         * 中国电信：China Telecom
      21         * 133,1349,153,180,189
@@ -157,7 +165,7 @@
 }
 #pragma mark -- 密码
 + (BOOL)validatePassword:(NSString *)password{
-    NSString *passWordRegex = @"^[a-zA-Z0-9]{6,20}+$";
+    NSString *passWordRegex = @"^(?![0-9]+$)(?![a-zA-Z]+$)[a-zA-Z0-9]{6,20}+$";
     NSPredicate *passWordPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",passWordRegex];
     return [passWordPredicate evaluateWithObject:password];
 }
